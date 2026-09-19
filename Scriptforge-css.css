@@ -1,0 +1,682 @@
+@charset "UTF-8";
+
+/*
+   Copyright 2026 Scriptforge
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.
+
+*/
+:root{
+  /* 可修改 */
+  --toggle-width: 60px;
+
+  /* 字体 */
+  --font-family: "Microsoft Yahei", "Segoe UI", Roboto, "PingFang SC", "Noto Sans SC", sans-serif;
+
+  /* 颜色 */
+  --bg-body-color: #f2f2f7;
+  --body-color: #1c1c1e;
+  --bg-menu-color: rgba(255, 255, 255, 0.72);
+  --menu-link-color: #1c1c1e;
+  --menu-link-focus: rgba(0, 0, 0, 0.06);
+  --bg-menu-link-active: #007aff;
+  --menu-link-active: #f2f2f7;
+  --bg-card: #ffffff;
+  --h1-3-color: #000000;
+  --h4-6-color: rgba(0, 0, 0, 0.4);
+  --bg-border: #007aff;
+  --bg-btn-color: #007aff;
+  --btn-color: #fff;
+  --bg-btn-hover: #0060df;
+  --bg-btn-active: #0051b8;
+  --bg-btn-2nd: rgba(0, 0, 0, 0.05);
+  --btn-2nd-color: #007aff;
+  --bg-btn-2nd-hover: rgba(0, 0, 0, 0.008);
+  --bg-success: #34c759;
+  --bg-btn-scs-hover: #2da848;
+  --bg-error: #ff3b30;
+  --bg-btn-err-hover: #e02e24;
+  --toggle-bg-off: #cccccc;
+  --toggle-bg-on: #2563eb;
+  --toggle-thumb-bg: #ffffff;
+  --toggle-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  --bg-form-color: rgba(255, 255, 255, 0.95);
+  --form-color: #1c1c1e;
+  --form-placeholder-color: rgba(0, 0, 0, 0.3);
+  --form-hover-border-color: rgba(0, 0, 0, 0.2);
+  --bg-primary: #007aff;
+  --p-color: #000000;
+
+
+  /* 边框与阴影 */
+  --border-color: rgba(0, 0, 0, 0.3);
+  --shadow-card: 0 1px 6px var(--border-color);
+  --shadow-card-hover: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --border-input: rgba(0, 0, 0, 0.12);
+  --border-focus: rgba(0, 122, 255, 0.4);
+  --shadow-focus: 0 0 0 3px var(--border-focus);
+
+  /* 间距与圆角 */
+  --toggle-gap: 2px;
+  --spacing: 8px;
+  --radius: 12px;
+  --radius-card: 12px;
+  --radius-sm: 8px;
+
+  /* 动画 */
+  --ease-out: cubic-bezier(0.23, 1, 0.32, 1);
+  --toggle-duration: 300ms;
+  --toggle-focus-outline: 2px solid #2563eb;
+  --duration-fast: 150ms;
+  --duration-medium: 300ms;
+  --duration-slow: 500ms;
+
+  /* 特效 */
+  --acrylic-blur: blur(20px) saturate(180%);
+
+  /* toggle */
+  --toggle-height: calc( var(--toggle-width) / 2 );
+  --toggle-thumb-size: calc( var(--toggle-height) - 4px );
+}
+
+.dark-mode {
+      /* 字体 */
+      --font-family: "Microsoft Yahei", "Segoe UI", Roboto, "PingFang SC", "Noto Sans SC", sans-serif;
+
+      /* 颜色 */
+      --bg-body-color: #121214;
+      --body-color: #f2f2f7;
+      --bg-menu-color: rgba(30, 30, 32, 0.75);
+      --menu-link-color: #e6e6e6;
+      --menu-link-focus: rgba(248, 242, 242, 0.08);
+      --bg-menu-link-active: #007aff;
+      --menu-link-active: #ffffff;
+      --bg-card: #1c1c1e;
+      --h1-3-color: #ffffff;
+      --h4-6-color: rgba(255, 255, 255, 0.5);
+      --bg-border: #007aff;
+      --bg-btn-color: #007aff;
+      --btn-color: rgba(255, 255, 255, 0.95);
+      --bg-btn-hover: #0060df;
+      --bg-btn-active: #0051b8;
+      --bg-btn-2nd: rgba(255, 255, 255, 0.1);
+      --btn-2nd-color: #007aff;
+      --bg-btn-2nd-hover: rgba(255, 255, 255, 0.15);
+      --bg-success: #34c759;
+      --bg-btn-scs-hover: #2da848;
+      --bg-error: #ff3b30;
+      --bg-btn-err-hover: #e02e24;
+      --toggle-bg-off: #3a3a3c;
+      --toggle-bg-on: #007aff;
+      --toggle-thumb-bg: #ffffff;
+      --toggle-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+      --bg-form-color: #2c2c2e;
+      --form-color: #ffffff;
+      --form-placeholder-color: rgba(255, 255, 255, 0.35);
+      --form-hover-border-color: rgba(255, 255, 255, 0.3);
+      --bg-primary: #007aff;
+      --p-color: #aeae2;
+
+      /* 边框与阴影 */
+      --border-color: rgba(255, 255, 255, 0.08);
+      --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.3);
+      --shadow-card-hover: 0 10px 25px rgba(0, 0, 0, 0.45);
+      --border-input: rgba(255, 255, 255, 0.12);
+      --border-focus: rgba(0, 122, 255, 0.5);
+      --shadow-focus: 0 0 0 3px var(--border-focus);
+    }
+
+/*
+ 重置所有样式 
+*/
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ 基础样式
+*/
+html {
+  height: 100%;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  min-height: 100%;
+  background: var(--bg-body-color);
+  color: var(--body-color);
+  font-family: var(--font-family);
+  line-height: 1.5;
+}
+
+
+/*
+ 内容容器
+*/
+.page-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
+@media (max-width: 640px) {
+  .page-wrapper {
+    padding: 0 12px;
+  }
+}
+
+/*
+ 菜单
+*/
+.menu {
+  position: sticky;
+  width: 100%;
+  z-index: 10;
+  -webkit-backdrop-filter: var(--acrylic-blur);
+  backdrop-filter: var(--acrylic-blur);
+  background: var(--bg-menu-color);
+  padding: var(--spacing);
+  
+}
+
+.menu-top {
+  top: 0;
+  border-bottom: 1px solid var(--border-color);
+  border-bottom-left-radius: var(--radius);
+  border-bottom-right-radius: var(--radius);
+}
+
+.menu-bottom {
+  bottom: 0;
+  border-top: 1px solid var(--border-color);
+  padding-bottom: calc(var(--spacing) + env(safe-area-inset-bottom));
+  border-top-left-radius: var(--radius);
+  border-top-right-radius: var(--radius);
+}
+
+.menu-list {
+  /*Warning: Only fit for a few elements*/
+  overflow-x: auto;
+  padding-bottom: 4px;
+  display: flex;
+  gap: var(--spacing);
+  list-style: none;
+  align-items: center;
+  
+}
+
+.menu-inner {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100%;
+}
+
+/* 2. 修复右侧插槽内部元素的平铺对齐 */
+.menu ::slotted([slot="right"]),
+.menu-inner ::slotted([slot="right"]) {
+  display: flex !important;
+  align-items: center !important;
+  gap: var(--spacing) !important;
+}
+
+/* 3. 如果右侧是一个容器（如 div 或 ul），确保里面的元素也水平排列 */
+[slot="right"] {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing);
+}
+
+@media (max-width: 640px) {
+  .menu-list {
+    overflow-x: auto;
+    padding-bottom: 4px;
+    
+    /* 隐藏滚动条 - 跨浏览器方案 */
+    scrollbar-width: none;        /* Firefox */
+    -ms-overflow-style: none;     /* IE 10+ */
+    
+    &::-webkit-scrollbar {
+      display: none;              /* Chrome, Safari, Edge, Opera */
+    }
+  }
+}
+
+.menu-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  padding: 6px 12px;
+  border-radius: var(--radius);
+  color: var(--menu-link-color);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.7rem;
+  transition: 
+    background var(--duration-medium) var(--ease-out),
+    transform var(--duration-fast) ease-out,
+    color var(--duration-fast) ease-out;
+  
+  &:hover,
+  &:focus-visible {
+    background: var(--menu-link-focus);
+    outline: none;
+  }
+  
+  &:focus-visible {
+    box-shadow: var(--shadow-focus);
+  }
+  
+  &:active {
+    transform: scale(0.94);
+  }
+  
+  &.active {
+    background-color: var(--bg-menu-link-active);
+    color: var(--menu-link-active);
+    
+    .icon {
+      background-color: var(--bg-menu-link-active);
+    }
+  }
+  
+  .icon {
+    font-size: 1.35rem;
+    line-height: 1;
+    transition: color var(--duration-fast) ease-out;
+  }
+  
+  .label {
+    font-size: 0.7rem;
+    line-height: 1;
+    margin-top: 2px;
+  }
+}
+
+/*
+ 标题层级
+*/
+h1 {
+  font-size: clamp(1.75rem, 4vw, 2.25rem) !important; /* 28px ~ 36px */
+  font-weight: 800 !important;
+  margin: 24px 0 16px !important;
+  color: var(--h1-3-color) !important;
+  line-height: 1.25 !important;
+  letter-spacing: -0.02em !important;
+}
+
+h2 {
+  font-size: clamp(1.35rem, 2.5vw, 1.65rem) !important; /* 21.6px ~ 26.4px */
+  font-weight: 700 !important;
+  margin: 24px 0 12px !important;
+  color: var(--h1-3-color) !important;
+  line-height: 1.3 !important;
+  letter-spacing: -0.01em !important;
+}
+
+h3 {
+  font-size: 1.15rem !important; /* 18.4px */
+  font-weight: 600 !important;
+  margin: 18px 0 10px !important;
+  color: var(--h1-3-color) !important;
+  line-height: 1.35 !important;
+}
+
+h4 {
+  font-size: 1rem !important; /* 16px */
+  font-weight: 600 !important;
+  margin: 14px 0 8px !important;
+  color: var(--body-color) !important;
+  line-height: 1.4 !important;
+}
+
+h5 {
+  font-size: 0.875rem !important; /* 14px */
+  font-weight: 600 !important;
+  margin: 12px 0 6px !important;
+  color: var(--h4-6-color) !important;
+  line-height: 1.4 !important;
+}
+
+h6 {
+  font-size: 0.75rem !important; /* 12px */
+  font-weight: 600 !important;
+  margin: 12px 0 6px !important;
+  color: var(--h4-6-color) !important;
+  line-height: 1.4 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.05em !important;
+}
+
+/*
+ 卡片组件
+*/
+.card {
+  background: var(--bg-card);
+  padding: 16px;
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-card);
+  margin-bottom: 12px;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: 
+    opacity var(--duration-medium) var(--ease-out),
+    transform var(--duration-medium) var(--ease-out),
+    box-shadow var(--duration-medium) var(--ease-out);
+  
+  &.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  &:hover {
+    box-shadow: var(--shadow-card-hover);
+  }
+}
+
+/*
+ 表单控件
+*/
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-sm);
+  font-size: 16px; /* 防止 iOS 缩放 */
+  background: var(--bg-form-color);
+  margin-top: 6px;
+  margin-bottom: 8px;
+  color: var(--form-color);
+  font-family: inherit;
+  transition: 
+    border-color var(--duration-fast) ease-out,
+    box-shadow var(--duration-fast) ease-out;
+  
+  &::placeholder {
+    color: var(--form-placeholder-color);
+  }
+  
+  &:hover {
+    border-color: var(--form-hover-border-color);
+  }
+  
+  &:focus {
+    outline: none;
+    border-color: var(--bg-border);
+    box-shadow: var(--shadow-focus);
+  }
+}
+
+textarea {
+  resize: vertical;
+  min-height: 80px;
+  line-height: 1.5;
+}
+
+/* 禁用状态 */
+input:disabled,
+textarea:disabled,
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/*
+ 按钮
+*/
+button,
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  background: var(--bg-btn-color);
+  color: var(--btn-color);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  font-family: inherit;
+  line-height: 1.4;
+  transition: 
+    background var(--duration-fast) ease-out,
+    transform var(--duration-fast) ease-out,
+    box-shadow var(--duration-fast) ease-out;
+  
+  &:hover:not(:disabled) {
+    background: var(--bg-btn-hover);
+  }
+  
+  &:focus-visible {
+    outline: none;
+    box-shadow: var(--shadow-focus);
+  }
+  
+  &:active:not(:disabled) {
+    transform: scale(0.96);
+    background: var(--bg-btn-active);
+  }
+}
+
+/* 按钮变体 */
+.btn-secondary {
+  background: var(--bg-btn-2nd);
+  color: var(--btn-2nd-color);
+  
+  &:hover:not(:disabled) {
+    background: var(--bg-btn-2nd-hover);
+  }
+}
+
+.btn-success {
+  background: var(--bg-success);
+  
+  &:hover:not(:disabled) {
+    background: var(--bg-btn-scs-hover);
+  }
+}
+
+.btn-error {
+  background: var(--bg-error);
+  
+  &:hover:not(:disabled) {
+    background: var(--bg-btn-err-hover);
+  }
+}
+
+.toggle-btn {
+  position: relative;
+  width: var(--toggle-width);
+  height: var(--toggle-height);
+
+  display: block;
+  border: none;
+  padding: 0;
+  border-radius: 9999px;
+  cursor: pointer;
+
+  background-color: var(--toggle-bg-off);
+  transition: background-color var(--toggle-duration) ease;
+}
+
+/* 滑块伪元素 */
+.toggle-btn::after {
+  content: "";
+  position: absolute;
+  top: var(--toggle-gap);
+  left: var(--toggle-gap);
+
+  width: var(--toggle-thumb-size);
+  height: var(--toggle-thumb-size);
+  border-radius: 50%;
+
+  background-color: var(--toggle-thumb-bg);
+  box-shadow: var(--toggle-shadow);
+
+  transition: transform var(--toggle-duration) ease;
+}
+
+/* 开启状态 */
+.toggle-btn.on {
+  background-color: var(--toggle-bg-on);
+}
+.toggle-btn.on::after {
+  /* 向右位移：总宽度 - 滑块大小 - 左边间隙 */
+  transform: translateX(calc(var(--toggle-width) - var(--toggle-thumb-size) - var(--toggle-gap)*2));
+}
+
+/* 焦点样式，保留键盘tab访问 */
+.toggle-btn:focus-visible {
+  outline: var(--toggle-focus-outline);
+  outline-offset: 2px;
+}
+
+/* 
+ 状态提示
+*/
+.success {
+  color: var(--bg-success);
+  white-space: pre-wrap;
+}
+
+.error {
+  color: var(--bg-error);
+  white-space: pre-wrap;
+}
+
+/* Toast 提示 */
+.toast {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-20px);
+  padding: 12px 20px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  border-radius: var(--radius);
+  font-size: 0.9rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: all var(--duration-medium) var(--ease-out);
+  z-index: 100;
+  
+  &.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+  
+}
+
+/*
+ 无障碍
+ */
+[role="status"] {
+  min-height: 1.2em;
+  margin-top: 8px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/*
+ 减少动画（无障碍）
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Flex 工具类 */
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.gap-2 {
+  gap: calc(var(--spacing) * 0.5);
+}
+
+.gap-3 {
+  gap: calc(var(--spacing) * 0.75);
+}
+
+.gap-4 {
+  gap: var(--spacing);
+}
+
+/*
+ 段落
+*/
+p,
+.p{
+  color: var(--p-color);
+}
+
+/*
+ sf-menu
+*/
+sf-menu {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    display: block;
+}
+
+/* 右侧插槽内部的布局 */
+.sf-menu-right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing);
+}
+
+/*
+ sf-toast
+*/
+sf-toast {
+  position: fixed;
+  z-index: 9999;
+}

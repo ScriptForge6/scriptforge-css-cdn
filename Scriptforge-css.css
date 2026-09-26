@@ -563,27 +563,35 @@ button,
   white-space: pre-wrap;
 }
 
-/* Toast 提示 */
-.toast {
+/* Toast 容器 */
+.toast-container {
   position: fixed;
   top: 20px;
   left: 50%;
-  transform: translateX(-50%) translateY(-20px);
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: center;
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* 单条 Toast */
+.toast {
   padding: 12px 20px;
   background: rgba(0, 0, 0, 0.8);
   color: #fff;
   border-radius: var(--radius);
   font-size: 0.9rem;
   opacity: 0;
-  pointer-events: none;
+  transform: translateY(-20px);
   transition: all var(--duration-medium) var(--ease-out);
-  z-index: 100;
-  
+
   &.show {
     opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    transform: translateY(0);
   }
-  
 }
 
 /*

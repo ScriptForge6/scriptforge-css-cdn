@@ -94,37 +94,40 @@ class SFToast extends HTMLElement {
   constructor() {
     super();
 
-    // 创建 Shadow DOM
     const shadow = this.attachShadow({ mode: 'open' });
 
-    // 定义模板结构
     const template = document.createElement('template');
     template.innerHTML = `
 <link id="theme-style" rel="stylesheet" href="${cssFilePath}">
-<div id="toast" class="toast"></div>
+<div id="toast-container" class="toast-container"></div>
 `;
 
     shadow.appendChild(template.content.cloneNode(true));
+
+    this._container = shadow.getElementById('toast-container');
   }
 
-
   showToast(message, time = 2500) {
-    const toast = this.shadowRoot.getElementById('toast');
-    toast.textContent = message;
+    // 每次调用都创建一个新的 toast 节点
+    const toastEl = document.createElement('div');
+    toastEl.className = 'toast';
+    toastEl.textContent = message;
 
+    this._container.appendChild(toastEl);
 
-    // 显示 toast
-    toast.classList.add('show');
+    // 下一帧再加 show 类，触发过渡动画（如果有 CSS transition）
+    requestAnimationFrame(() => {
+      toastEl.classList.add('show');
+    });
 
-    // 2.5 秒后隐藏
+    // 到时间后隐藏并移除这个节点，跟其他 toast 互不影响
     setTimeout(() => {
-      toast.classList.remove('show');
+      toastEl.classList.remove('show');
+
       setTimeout(() => {
-        toast.textContent = "";
+        toastEl.remove();
       }, 100);
     }, time);
-    
-
   }
 }
 
